@@ -1,0 +1,7 @@
+﻿  Card.cpp
+  Deck.cpp
+  Main.cpp
+  RandomCardGenerator.cpp
+Z:\C++ Projects\Random Card Generator\RandomCardGenerator.cpp(11,27): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+  Random Card Generator.vcxproj -> Z:\C++ Projects\Random Card Generator\Debug\Random Card Generator.exe

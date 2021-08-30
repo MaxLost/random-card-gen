@@ -1,0 +1,8 @@
+﻿  Card.cpp
+  card_generator.cpp
+  RandomCardGenerator.cpp
+Z:\C++ Projects\Random Card Generator\RandomCardGenerator.cpp(9,23): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+Z:\C++ Projects\Random Card Generator\RandomCardGenerator.cpp(14,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+card_generator.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: void __cdecl RandomCardGenerator::GenerateRandomCard(void)" (?GenerateRandomCard@RandomCardGenerator@@QEAAXXZ) в функции main
+Z:\C++ Projects\Random Card Generator\x64\Debug\Random Card Generator.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
