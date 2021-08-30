@@ -32,13 +32,16 @@ void Deck::AddCard(Card &current_card) {
 		upper_card->prev_node = lower_card;
 		lower_card->next_node = upper_card;
 	}
+	int type, suit;
+	current_card.GetProperties(type, suit);
+	cards_in_deck[(type * (suit + 1)) - 2] = 1;
 };
 
 void Deck::GetCard(Node* card_ptr, Card& out) {
 	card_ptr->GetCard(out);
 	int type, suit;
 	out.GetProperties(type, suit);
-	cards_in_deck[type * (suit + 1)] = 0;
+	cards_in_deck[(type * (suit + 1)) - 2] = 0;
 }
 
 void Deck::GetUpperCard(Card& out) {
@@ -70,7 +73,7 @@ void Deck::GetLowerCard(Card& out) {
 bool Deck::IsCardInDeck(Card& current_card) {
 	int type, suit;
 	current_card.GetProperties(type, suit);
-	if (cards_in_deck[type * (suit + 1)] == 0)
+	if (cards_in_deck[(type * (suit + 1)) - 2] == 0)
 		return false;
 	else
 		return true;
