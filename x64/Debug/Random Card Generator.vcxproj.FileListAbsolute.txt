@@ -1,0 +1,2 @@
+Z:\C++ Projects\random-card-gen\x64\Debug\Random Card Generator.exe
+Z:\C++ Projects\random-card-gen\x64\Debug\Random Card Generator.pdb
