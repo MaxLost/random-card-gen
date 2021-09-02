@@ -26,7 +26,7 @@ private:
 				card = nullptr;
 			}
 	};
-	std::vector <int> cards_in_deck;
+	std::vector <short> cards_in_deck;
 public:
 	Node* upper_card = nullptr;
 	Node* lower_card = nullptr;
