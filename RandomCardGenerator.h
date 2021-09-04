@@ -7,8 +7,13 @@
 class RandomCardGenerator {
 private:
 	std::mt19937 rng;
-	void InitPropertiesSets();
-	std::vector <std::string> suits;
+	void InitTypesSet();
+	enum Suits {
+		Spades,
+		Clubs,
+		Hearts,
+		Diamonds
+	};
 	std::vector <int> type;
 public:
 	RandomCardGenerator();

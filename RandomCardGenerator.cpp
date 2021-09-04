@@ -7,59 +7,49 @@
 #include "Card.h"
 #include "Deck.h"
 
-RandomCardGenerator::RandomCardGenerator() {};
+RandomCardGenerator::RandomCardGenerator() {
+    InitTypesSet();
+};
 
-void RandomCardGenerator::InitPropertiesSets() {
+void RandomCardGenerator::InitTypesSet() {
     int n = 13;
     type.resize(n);
-    suits.resize(4);
     // Values in array: 2-10 — numbers; 11 — Jack; 12 — Queen; 13 — King; 14 — Ace
     for (int i = 0; i < n; i++) // Initializing types of cards;
         type[i] = i + 2;
-
-    suits[0] = "Spades"; // Initializing suits of cards. Refactor when custom suits will be added
-    suits[1] = "Clubs";
-    suits[2] = "Hearts";
-    suits[3] = "Diamonds";
 };
 
 void RandomCardGenerator::ShowCard(Card& current_card) {
     int card_type, card_suit;
-    current_card.Card::GetProperties(card_type, card_suit); // Getting properties of current card
+    current_card.GetProperties(card_type, card_suit); // Getting properties of current card
 
     if (card_type == -1 || card_suit == -1) { // Checking correct initialization of current card
         std::cout << "Card initialization error" << std::endl;
         exit(EXIT_FAILURE);
     }
-    std::cout << suits[card_suit] << ' ';
+    if (card_suit == Spades)
+        std::cout << "Spades" << ' ';
+    else if (card_suit == Clubs)
+        std::cout << "Clubs" << ' ';
+    else if (card_suit == Hearts)
+        std::cout << "Hearts" << ' ';
+    else if (card_suit == Diamonds)
+        std::cout << "Diamonds" << ' ';
 
     if (card_type <= 10) {  // Checking only upper border because "Card" object can't contain wrong values
         std::cout << card_type << std::endl;
     }
-    else {
-        switch (card_type) {
-        case 11:
-            std::cout << "Jack" << std::endl;
-            break;
-        case 12:
-            std::cout << "Queen" << std::endl;
-            break;
-        case 13:
-            std::cout << "King" << std::endl;
-            break;
-        case 14:
-            std::cout << "Ace" << std::endl;
-            break;
-        default:
-            std::cout << "Error" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-    };
+    else if (card_type == 11)
+        std::cout << "Jack" << std::endl;
+    else if (card_type == 12)
+        std::cout << "Queen" << std::endl;
+    else if (card_type == 13)
+        std::cout << "King" << std::endl;
+    else if (card_type == 14)
+        std::cout << "Ace" << std::endl;
 }
 
-void RandomCardGenerator::GenerateRandomCard(Card &current_card) {
-    RandomCardGenerator::InitPropertiesSets();
-    
+void RandomCardGenerator::GenerateRandomCard(Card &current_card) {  
     std::random_device rd;
     std::mt19937 rng;
     rng.seed(rd() + time(0));
