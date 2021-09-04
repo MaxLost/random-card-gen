@@ -5,14 +5,17 @@
 #include <random>
 #include "RandomCardGenerator.h"
 #include "Card.h"
+#include "Deck.h"
 
 RandomCardGenerator::RandomCardGenerator() {
     std::random_device rd;
     std::mt19937 rng(rd() + time(nullptr));
 };
 
-void RandomCardGenerator::InitPropertiesSets(std::vector <int>& type, std::vector <std::string>& suits) {
-    int n = type.size();
+void RandomCardGenerator::InitPropertiesSets() {
+    int n = 13;
+    type.resize(n);
+    suits.resize(4);
     // Values in array: 2-10 — numbers; 11 — Jack; 12 — Queen; 13 — King; 14 — Ace
     for (int i = 0; i < n; i++) // Initializing types of cards;
         type[i] = i + 2;
@@ -23,7 +26,7 @@ void RandomCardGenerator::InitPropertiesSets(std::vector <int>& type, std::vecto
     suits[3] = "Diamonds";
 };
 
-void RandomCardGenerator::ShowCard(Card& current_card, std::vector <std::string>& suits) {
+void RandomCardGenerator::ShowCard(Card& current_card) {
     int card_type, card_suit;
     current_card.Card::GetProperties(card_type, card_suit); // Getting properties of current card
 
@@ -57,19 +60,31 @@ void RandomCardGenerator::ShowCard(Card& current_card, std::vector <std::string>
     };
 }
 
-void RandomCardGenerator::GenerateRandomCard() {
-    std::vector <std::string> suits(4);
-    std::vector <int> type(13);
-
-    RandomCardGenerator::InitPropertiesSets(type, suits);
+void RandomCardGenerator::GenerateRandomCard(Card &current_card) {
+    RandomCardGenerator::InitPropertiesSets();
 
     std::uniform_int_distribution<int> n(1, 10000);
     int x = n(rng) + 20;
 
-    Card* current_card = new Card;
-    (*current_card).Card::SetProperties(type[x % 13], x % 4);
+    (current_card).Card::SetProperties(type[x % 13], x % 4);
+};
 
-    RandomCardGenerator::ShowCard(*current_card, suits);
+void RandomCardGenerator::GenerateCardInDeck(Deck &CurrentDeck) {
+    Card* current_card = new Card;
+    RandomCardGenerator::GenerateRandomCard(*current_card);
+    while (CurrentDeck.IsCardInDeck(*current_card) == true) {
+        delete current_card;
+        Card* current_card = new Card;
+        RandomCardGenerator::GenerateRandomCard(*current_card);
+    }
+    CurrentDeck.AddCard(*current_card);
+    delete current_card;
+};
+
+void RandomCardGenerator::GenerateCards() {
+    Card* current_card = new Card;
+    RandomCardGenerator::GenerateRandomCard(*current_card);
+    RandomCardGenerator::ShowCard(*current_card);
     delete current_card;
 };
 

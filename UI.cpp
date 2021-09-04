@@ -18,6 +18,9 @@ void UI::PrintHelpMessage() {
 	std::cout << std::endl;
 	std::cout << "  -g -deck <amount of cards>	Generate some cards and put it in deck without duplicates";
 	std::cout << std::endl;
+}
+void UI::TooManyCardsError() {
+	std::cout << "ERROR: Too many cards to generate in deck" << std::endl;
 };
 
 UI::~UI() {};

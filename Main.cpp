@@ -25,15 +25,22 @@ int main(void){
             if (form == "-nodeck") {
                 RandomCardGenerator* Generator = new RandomCardGenerator;
                 for (int i = 0; i < n; i++) {
-                    (*Generator).GenerateRandomCard();
+                    (*Generator).GenerateCards();
                 }
                 delete Generator;
             }
             else if (form == "-deck") {
                 RandomCardGenerator* Generator = new RandomCardGenerator;
                 Deck* CurrentDeck = new Deck;
-                if (n > 36)
-                cout << "ERROR:  Temporarly unavailable function" << endl;
+                if (n > 52) {
+                    UI::TooManyCardsError();
+                }
+                else {
+                    for (int i = 0; i < n; i++) {
+                        (*Generator).GenerateCardInDeck(*CurrentDeck);
+                    }
+                }
+                
             }
         }
     }
