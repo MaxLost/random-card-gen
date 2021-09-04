@@ -3,7 +3,7 @@
 #include "Deck.h"
 
 Deck::Deck() {
-	Node *upper_card = new Node;
+	upper_card = new Node;
 	cards_in_deck.resize(52);
 	for (int i = 0; i < 52; i++) {
 		cards_in_deck[i] = 0;
@@ -16,7 +16,7 @@ void Deck::AddCard(Card &current_card) {
 	}
 	else {
 		lower_card = upper_card;
-		Node* upper_card = new Node;
+		upper_card = new Node;
 		upper_card->next_node = lower_card;
 		lower_card->prev_node = upper_card;
 		upper_card->SetCard(current_card);
@@ -46,6 +46,9 @@ void Deck::GetUpperCard(Card& out) {
 };
 
 void Deck::GetLowerCard(Card& out) {
+	Node* lower_card = upper_card;
+	while (lower_card->next_node != nullptr)
+		lower_card = lower_card->next_node;
 	GetCard(lower_card, out);
 	if (lower_card->prev_node != nullptr) {
 		lower_card = lower_card->prev_node;
@@ -53,7 +56,7 @@ void Deck::GetLowerCard(Card& out) {
 		lower_card->next_node = nullptr;
 	}
 	else {
-		upper_card->ResetCard();
+		lower_card->ResetCard();
 	}
 };
 

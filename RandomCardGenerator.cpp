@@ -7,10 +7,7 @@
 #include "Card.h"
 #include "Deck.h"
 
-RandomCardGenerator::RandomCardGenerator() {
-    std::random_device rd;
-    std::mt19937 rng(rd() + time(nullptr));
-};
+RandomCardGenerator::RandomCardGenerator() {};
 
 void RandomCardGenerator::InitPropertiesSets() {
     int n = 13;
@@ -62,9 +59,12 @@ void RandomCardGenerator::ShowCard(Card& current_card) {
 
 void RandomCardGenerator::GenerateRandomCard(Card &current_card) {
     RandomCardGenerator::InitPropertiesSets();
-
-    std::uniform_int_distribution<int> n(1, 10000);
-    int x = n(rng) + 20;
+    
+    std::random_device rd;
+    std::mt19937 rng;
+    rng.seed(rd() + time(0));
+    std::uniform_int_distribution<unsigned> distribution(1, 10e9);
+    unsigned x = distribution(rng);
 
     (current_card).Card::SetProperties(type[x % 13], x % 4);
 };
@@ -74,11 +74,10 @@ void RandomCardGenerator::GenerateCardInDeck(Deck &CurrentDeck) {
     RandomCardGenerator::GenerateRandomCard(*current_card);
     while (CurrentDeck.IsCardInDeck(*current_card) == true) {
         delete current_card;
-        Card* current_card = new Card;
+        current_card = new Card;
         RandomCardGenerator::GenerateRandomCard(*current_card);
     }
     CurrentDeck.AddCard(*current_card);
-    delete current_card;
 };
 
 void RandomCardGenerator::GenerateCards() {

@@ -28,8 +28,8 @@ private:
 	};
 	std::vector <short> cards_in_deck;
 public:
-	Node* upper_card = nullptr;
-	Node* lower_card = nullptr;
+	Node* upper_card;
+	Node* lower_card;
 	Deck();
 	void AddCard(Card &current_card);
 	void GetCard(Node* card_ptr, Card& out);
