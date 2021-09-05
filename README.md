@@ -1,5 +1,5 @@
 # Random Card Generator
-This app can generate random cards for classic card games. There are 2-10, Jack, Queen, King, Ace in four suits.
+This app can generate random cards for classic card games. You can generate simple list of cards with duplicates and deck of cards without duplicates.
 
 __Quick start guide__ <br />
 There are two options to get an app. First is download "Random Card Generator.exe" file from "EXE version" folder. Second is download all of source files and compile app on your own machine.
