@@ -22,8 +22,8 @@ void UI::TooManyCardsError() {
 	std::cout << "ERROR: Too many cards to generate in deck. Maximum of cards without duplicates is 52" << std::endl;
 }
 
-void UI::WrongCommandError() {
-	std::cout << "ERROR: Wrong command / For help use '-help'" << std::endl;
+void UI::UnknownCommandError() {
+	std::cout << "ERROR: Unknown command / For help use '-help'" << std::endl;
 };
 
 // Deck mode messages

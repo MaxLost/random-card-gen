@@ -21,8 +21,8 @@ int main(void){
             int n;
             string form;
             cin >> form;
-            cin >> n;
             if (form == "-nodeck") {
+                cin >> n;
                 RandomCardGenerator* Generator = new RandomCardGenerator;
                 for (int i = 0; i < n; i++) {
                     (*Generator).GenerateCards();
@@ -30,6 +30,7 @@ int main(void){
                 delete Generator;
             }
             else if (form == "-deck") {
+                cin >> n;
                 RandomCardGenerator* Generator = new RandomCardGenerator;
                 Deck* CurrentDeck = new Deck;
                 if (n > 52) {
@@ -56,7 +57,7 @@ int main(void){
                             else if (input == "-getlow")
                                 CurrentDeck->GetLowerCard(*current_card);
                             else
-                                UI::WrongCommandError();
+                                UI::UnknownCommandError();
                             
                             Generator->ShowCard(*current_card);
                             if (CurrentDeck->upper_card->CheckCard() == false) {
@@ -69,9 +70,12 @@ int main(void){
                 }
                 
             }
+            else {
+                UI::UnknownCommandError();
+            }
         }
         else {
-            UI::WrongCommandError();
+            UI::UnknownCommandError();
         }
     }
     return 0;
