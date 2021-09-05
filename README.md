@@ -10,7 +10,7 @@ You can ask me questions about code of this app via Telegram (Link is in my prof
 __Releases__ <br />
 History of versions older than v1.3.1 you can find by following this link: https://github.com/MaxLost/fjadraksveighen in "Random_Card_Generator" folder.
 
-__v.1.3.1:__
+__v.1.3.1 (Now in fixing bugs phase):__
 - Added deck functional, now you can generate cards in deck and get upper or lower card from it. In deck cards can't duplicate each other.
 - Reworked UI
 - Added two modes: GENERATOR mode for generate cards and DECK mode for interaction with generated cards in deck.
