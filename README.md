@@ -13,4 +13,4 @@ __v.1.3.1:__
 - Added two modes: GENERATOR mode for generate cards and DECK mode for interaction with generated cards in deck.
 
 __Questions__ <br />
-You can ask me questions about code of this app via Telegram (Link on me is in my profile).
+You can ask me questions about code of this app via Telegram (Link is in my profile).
