@@ -4,6 +4,7 @@ public:
     UI();
     static void PrintStartMessage();
     static void PrintHelpMessage();
+    static void UndefinedError();
     static void TooManyCardsError();
     static void UnknownCommandError();
     static void EnterDeckModeMessage();

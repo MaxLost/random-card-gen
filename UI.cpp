@@ -18,9 +18,13 @@ void UI::PrintHelpMessage() {
 };
 
 // Error messages
+void UI::UndefinedError() {
+	std::cout << "ERROR: Undefined error. Please make a bug report on github" << std::endl;
+};
+
 void UI::TooManyCardsError() {
 	std::cout << "ERROR: Too many cards to generate in deck. Maximum of cards without duplicates is 52" << std::endl;
-}
+};
 
 void UI::UnknownCommandError() {
 	std::cout << "ERROR: Unknown command / For help use '-help'" << std::endl;
