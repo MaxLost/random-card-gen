@@ -5,7 +5,7 @@ public:
     static void PrintStartMessage();
     static void PrintHelpMessage();
     static void TooManyCardsError();
-    static void WrongCommandError();
+    static void UnknownCommandError();
     static void EnterDeckModeMessage();
     static void DeckModeHelpMessage();
     static void ExitDeckModeMessage();
