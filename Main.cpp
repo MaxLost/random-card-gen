@@ -44,17 +44,24 @@ int main(void){
                         cin >> input;
                         if (input == "-help")
                             UI::DeckModeHelpMessage();
-                        else if (input == "-back")
+                        else if (input == "-back") {
+                            UI::ExitDeckModeMessage();
                             break;
+                        }
                         else {
                             Card* current_card = new Card;
+                            
                             if (input == "-getup")
                                 CurrentDeck->GetUpperCard(*current_card);
                             else if (input == "-getlow")
                                 CurrentDeck->GetLowerCard(*current_card);
+                            else
+                                UI::WrongCommandError();
+                            
                             Generator->ShowCard(*current_card);
-                            if (CurrentDeck->lower_card->CheckCard() == false || CurrentDeck->upper_card->CheckCard() == false) {
+                            if (CurrentDeck->upper_card->CheckCard() == false) {
                                 UI::EmptyDeckMessage();
+                                UI::ExitDeckModeMessage();
                                 break;
                             }
                         }
@@ -67,6 +74,5 @@ int main(void){
             UI::WrongCommandError();
         }
     }
-    system("pause");
     return 0;
 }

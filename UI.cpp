@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 #include "UI.h"
+#define VERSION "1.3.1"
 
 UI::UI() {};
 // Main mode messages
 void UI::PrintStartMessage() {
 	std::cout << std::endl;
-	std::cout << "Random card generator v1.2.1 / For help use '-help' / For quit use '-quit'" << std::endl;
+	std::cout << "Random card generator v" << VERSION << " / For help use '-help' / For quit use '-quit'" << std::endl;
 };
 
 void UI::PrintHelpMessage() {
@@ -18,7 +19,7 @@ void UI::PrintHelpMessage() {
 
 // Error messages
 void UI::TooManyCardsError() {
-	std::cout << "ERROR: Too many cards to generate in deck" << std::endl;
+	std::cout << "ERROR: Too many cards to generate in deck. Maximum of cards without duplicates is 52" << std::endl;
 }
 
 void UI::WrongCommandError() {
